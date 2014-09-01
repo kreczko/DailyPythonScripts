@@ -22,10 +22,13 @@ setup_crab() {
 	crab_version=$1
 	crab_config=$2
 	workdir=$3
+	# cd into CMSSW/src
+	cd ..
+	tar czf DailyPythonScripts.tar.gz DailyPythonScripts
 	if [[ $crab_version == 2 ]]; then
 		echo "Using CRAB version 2"
 		source /cvmfs/cms.cern.ch/crab/crab.sh
-		crab -create -cfg $crab_config
+		crab -create -cfg DailyPythonScripts/$crab_config
 		crab -submit -c $workdir
 	fi
 	
