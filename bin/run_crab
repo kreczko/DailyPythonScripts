@@ -22,9 +22,13 @@ setup_crab() {
 	crab_version=$1
 	crab_config=$2
 	workdir=$3
+	use_git=$4
+	
 	# cd into CMSSW/src
 	cd ..
-	tar czf DailyPythonScripts.tar.gz DailyPythonScripts
+	if [[ $use_git == 0 ]]; then
+		tar czf DailyPythonScripts.tar.gz DailyPythonScripts
+	fi
 	if [[ $crab_version == 2 ]]; then
 		echo "Using CRAB version 2"
 		source /cvmfs/cms.cern.ch/crab/crab.sh
@@ -83,6 +87,7 @@ setup_DPS() {
 	else
 		tar xzf ../DailyPythonScripts.tar.gz
 		cd DailyPythonScripts
+	fi
 	source environment.sh
 	
 	if [[ $debug == 1 ]]; then
@@ -140,7 +145,7 @@ echo "dry_run = $dry_run"
 echo $1
 if [[ $1 == 'prepare' ]]; then
 	echo 'Preparing CRAB setup'
-	setup_crab $crab_version $crab_config $workdir
+	setup_crab $crab_version $config_file $workdir $use_git
 fi
 
 # when running with CRAB the job number will always be first:

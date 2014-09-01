@@ -23,7 +23,7 @@ script_arguments = run,$script_path
 ui_working_dir = $workdir
 copy_data = 0
 return_data = 1
-additional_input_files = DailyPythonScripts.tar.gz,$additional_files
+additional_input_files = $additional_files
 
 [GRID]
 se_white_list=T2_UK_SGrid_Bristol
