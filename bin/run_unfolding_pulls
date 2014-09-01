@@ -41,7 +41,7 @@ def get_parameters():
                        action = "store_true",
                       help = "Run jobs with CRAB instead of locally (you need a valid grid certificate for this" )
     parser.add_option( "--use-tar", dest = "use_git",
-                       action = "store_false",
+                       action = "store_false", default=True,
                       help = "Use tar fo everything instead of git." )
     parser.add_option( "--test", dest = "run_tests",
                        action = "store_true",

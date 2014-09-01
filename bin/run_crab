@@ -76,7 +76,7 @@ setup_DPS() {
 		ls -trlh
 		echo $PYTHONPATH
 	fi
-	rm -r DailyPythonScripts
+	rm -fr DailyPythonScripts
 	# Checkout and setup DailyPythonScripts
 	# CRAB does not transfer everything in the folder :(
 	if [[ $use_git == 1 ]]; then
