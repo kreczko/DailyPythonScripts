@@ -53,7 +53,7 @@ setup_DPS() {
 	if [[ $debug == 1 ]]; then
 		ls
 	fi
-		cd src
+	cd src
 	if [[ $debug == 1 ]]; then
 		ls
 		hostname
@@ -108,7 +108,7 @@ github_url="https://github.com/BristolTopGroup/DailyPythonScripts.git"
 github_branch="master"
 dry_run=0
 debug=0
-use_github=0
+use_github=1
 while getopts ":c:f:a:w:b:u:d:g:" opt;
 do
     case "$opt" in
@@ -142,6 +142,7 @@ echo "workdir = $workdir"
 echo "github_url = $github_url"
 echo "github_branch = $github_branch"
 echo "dry_run = $dry_run"
+echo "use_github = $use_github"
 echo $1
 if [[ $1 == 'prepare' ]]; then
 	echo 'Preparing CRAB setup'
@@ -154,7 +155,7 @@ fi
 if [[ $2 == 'run' ]]; then
 	if [[ $dry_run == 0 ]]; then
 		echo 'Setting DPS' 
-		setup_DPS 1 $use_git $github_url $github_branch
+		setup_DPS 1 $use_github $github_url $github_branch
 		echo "Running script $3"
 		time python $3 --dry-run -j $1 
 	fi
