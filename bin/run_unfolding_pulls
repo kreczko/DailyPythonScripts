@@ -4,22 +4,7 @@ from subprocess import call, Popen
 import shlex
 from string import Template
 from tools.Timer import nice_date_now
-
-offsets = [0, 35, 70]
-variables = ['MET', 'HT', 'ST', 'WPT', 'MT']
-energies = [7, 8]
-channels = ( 'electron', 'muon' )
-k_values = {'MET':[3],
-            'HT': [4],
-            'ST': [3],
-            'WPT':[3],
-            'MT': [2],
-            }
-n_toy = 35
-# offsets are twice because they are for data and for MC
-total_jobs = len( offsets ) * len( offsets ) * len( variables ) * len( energies ) * len( channels )
-N_CONCURRENT_JOBS=4
-current_processes = []
+from config.variable_binning import bin_edges
 
 def main():
     call( ['mkdir', '-p', 'logs'] )
@@ -121,11 +106,25 @@ def run_job( job_number , nohup = False, dry_run = False, tar_output = False ):
     
     if tar_output:
         output_folder = 'data/pull_data/%(energy)dTeV/%(variable)s/%(n_toy)d_input_toy_mc/k_value_%(k)d' % parameters
+        # create folder if it does not exist (i.e. dry-run)
+        call(['mkdir', '-p', output_folder])
         call(['tar','czf', 'output.tar.gz', output_folder, output_file_path])
     
 
 def test():
+    print 'Total number of jobs:', total_jobs
+    
+    print 'Testing No. 1'
     offset_mc, offset_data, variable, energy, channel, k = job_parameters( 1 )
+    assert( offset_mc == 0 )
+    assert( offset_data == 0 )
+    assert( variable == 'MET' )
+    assert( energy == 7 )
+    assert( channel == 'electron' )
+    assert( k == 2 )
+    
+    print 'Testing No. 2'
+    offset_mc, offset_data, variable, energy, channel, k = job_parameters( 2 )
     assert( offset_mc == 0 )
     assert( offset_data == 0 )
     assert( variable == 'MET' )
@@ -133,19 +132,14 @@ def test():
     assert( channel == 'electron' )
     assert( k == 3 )
     
-    offset_mc, offset_data, variable, energy, channel, k = job_parameters( 2 )
+    print 'Testing No. 40'
+    offset_mc, offset_data, variable, energy, channel, k = job_parameters( 40 )
     assert( offset_mc == 35 )
-    assert( offset_data == 0 )
+    assert( offset_data == 70 )
     assert( variable == 'MET' )
     assert( energy == 7 )
     assert( channel == 'electron' )
-    
-    offset_mc, offset_data, variable, energy, channel, k = job_parameters( 9 + len( k_values['MET'] ) )
-    assert( offset_mc == 0 )
-    assert( offset_data == 0 )
-    assert( variable == 'HT' )
-    assert( energy == 7 )
-    assert( channel == 'electron' )
+    assert( k == 6 )
 
 def create_crab_configuration(crab_version):
     template_file = open('templates/crab%d_config.txt' % crab_version, 'r')
@@ -176,6 +170,26 @@ def create_crab_configuration(crab_version):
     
     return crab_config, workdir
 
+def k_value_range(variable):
+    n_bins = len(bin_edges[variable]) -1
+    k_range = [x for x in range (2, n_bins + 1)]
+    return k_range
+
+
+
 if __name__ == '__main__':
+    offsets = [0, 35, 70]
+    variables = ['MET', 'HT', 'ST', 'WPT', 'MT']
+    energies = [7, 8]
+    channels = ( 'electron', 'muon' )
+    k_values = {}
+    for variable in variables:
+        k_values[variable] = k_value_range(variable)
+    n_toy = 35
+    # offsets are twice because they are for data and for MC
+    total_jobs = len( offsets ) * len( offsets ) * len( variables ) * len( energies ) * len( channels )
+    N_CONCURRENT_JOBS=4
+    current_processes = []
+    
     main()
 
