@@ -26,8 +26,9 @@ install:
   - conda info -a # Useful for debugging any issues with conda
   - conda config --add channels http://conda.anaconda.org/NLeSC  
   - conda config --set show_channel_urls yes
-  - conda create -q -n testenv python=${PYTHON} root=${ROOT} root-numpy numpy matplotlib nose sphinx pytables rootpy uncertainties
+  - conda create -q -n testenv python=${PYTHON} root=${ROOT} root-numpy numpy matplotlib nose sphinx pytables rootpy
   - source activate testenv
+  - pip install -U uncertainties
   - bash ci/build_RooUnfold.sh
 
 script: bash ci/test.sh
