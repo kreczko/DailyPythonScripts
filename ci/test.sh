@@ -6,6 +6,10 @@
 
 set -e
 
+export base=`pwd`
+export PATH=$PATH:$base/bin
+export PYTHONPATH=$PYTHONPATH:$base
+
 python --version
 python -c "import numpy; print('numpy %s' % numpy.__version__)"
 
