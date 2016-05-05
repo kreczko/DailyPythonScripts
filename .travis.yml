@@ -28,6 +28,7 @@ install:
   - conda config --set show_channel_urls yes
   - conda create -q -n testenv python=${PYTHON} root=${ROOT} root-numpy numpy matplotlib nose sphinx pytables rootpy uncertainties
   - source activate testenv
+  - bash ci/build_RooUnfold.sh
 
 script: bash ci/test.sh
 cache: apt
