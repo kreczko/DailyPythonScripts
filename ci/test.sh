@@ -10,6 +10,9 @@ export base=`pwd`
 export PATH=$PATH:$base/bin
 export PYTHONPATH=$PYTHONPATH:$base
 
+gcc -dumpversion
+g++ -dumpversion
+ldd --version
 python --version
 python -c "import numpy; print('numpy %s' % numpy.__version__)"
 
