@@ -1,8 +1,7 @@
 from __future__ import division, print_function
-from tools.file_utilities import read_data_from_JSON, write_data_to_JSON, deprecated
-from tools.Calculation import combine_errors_in_quadrature
-from tools.pandas_utilities import dict_to_df, list_to_series, df_to_file, divide_by_series
-from config import XSectionConfig
+from dps.utils.file_utilities import read_data_from_JSON, write_data_to_JSON, deprecated
+from dps.utils.Calculation import combine_errors_in_quadrature
+from dps.utils.pandas_utilities import dict_to_df, list_to_series, df_to_file, divide_by_series
 from copy import deepcopy
 from math import sqrt
 import numpy as np
@@ -511,7 +510,7 @@ def make_covariance_plot( options, systematic, matrix, label='Covariance' ):
     Take the matrix in list form and bin edges in list form to create a TH2F of the covariance matrix
     Saves to plots/covariance_matrices/{PhaseSpace}/{Channel}/{Variable}/
     '''
-    from config.variable_binning import bin_edges_vis
+    from dps.config.variable_binning import bin_edges_vis
     from ROOT import TH2F, TCanvas, TPad, gROOT, gStyle
     from array import array
     gROOT.SetBatch(True)
