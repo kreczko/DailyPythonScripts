@@ -11,7 +11,8 @@
 '''
 from __future__ import print_function
 from optparse import OptionParser
-from dps.config.xsection import XSectionConfig, variable_binning
+from dps.config.xsection import XSectionConfig
+from dps.config import variable_binning
 from dps.utils.input import Input
 from dps.utils.logger import log
 from copy import deepcopy
