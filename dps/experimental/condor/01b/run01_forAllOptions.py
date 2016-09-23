@@ -37,4 +37,4 @@ parser.add_option("-n", dest="jobNumber", default=-1, type='int',
 
 jobOption = jobOptions[options.jobNumber]
 print 'Running with options : ',jobOption
-os.system('python src/cross_section_measurement/01_get_ttjet_normalisation.py %s' % jobOption )
+os.system('python dps/analysis/xsection/01_get_ttjet_normalisation.py %s' % jobOption )

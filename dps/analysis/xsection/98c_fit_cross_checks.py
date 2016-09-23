@@ -7,7 +7,7 @@ import os
 from optparse import OptionParser
 # @BROKEN
 from dps.config.xsection import XSectionConfig, fit_var_inputs, latex_labels
-from .lib import closure_tests, read_fit_templates, \
+from dps.analysis.xsection.lib import closure_tests, read_fit_templates, \
     read_initial_normalisation
 from dps.utils.file_utilities import read_data_from_JSON, write_data_to_JSON
 from dps.config.variable_binning import variable_bins_ROOT, fit_variable_bin_edges, bin_edges_vis

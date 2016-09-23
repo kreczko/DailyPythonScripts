@@ -1,4 +1,4 @@
-Executable = experimental/condor/run_01.sh
+Executable = dps/experimental/condor/run_01.sh
 Universe = vanilla
 Output = 01.job.$(cluster).$(process).out
 Error = 01.job.$(cluster).$(process).err

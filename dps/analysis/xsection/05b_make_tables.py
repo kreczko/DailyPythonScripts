@@ -20,7 +20,7 @@ import os
 from optparse import OptionParser
 from dps.config.xsection import XSectionConfig
 from dps.utils.table import PrintTable
-from .lib import read_initial_normalisation,\
+from dps.analysis.xsection.lib import read_initial_normalisation,\
     read_unfolded_normalisation
 from dps.config.variable_binning import variable_bins_latex, variable_bins_visiblePS_latex
 

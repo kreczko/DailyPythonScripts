@@ -7,7 +7,7 @@ from dps.config.xsection import XSectionConfig
 from dps.utils.Calculation import getRelativeError
 from dps.utils.file_utilities import make_folder_if_not_exists, read_xsection_measurement_results_with_errors
 from dps.utils.hist_utilities import values_and_errors_to_hist
-from .lib import read_normalisation, read_initial_normalisation
+from dps.analysis.xsection.lib import read_normalisation, read_initial_normalisation
 import math
 import os.path
 from numpy import median

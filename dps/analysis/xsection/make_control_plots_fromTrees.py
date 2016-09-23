@@ -10,7 +10,7 @@ from dps.utils.hist_utilities import prepare_histograms, clean_control_region
 from dps.utils.ROOT_utils import get_histograms_from_trees, set_root_defaults
 from dps.utils.latex import setup_matplotlib
 from uncertainties import ufloat
-from .compareQCDControlRegions import getPUWeights
+from dps.analysis.xsection.compareQCDControlRegions import getPUWeights
 
 # latex, font, etc
 setup_matplotlib()

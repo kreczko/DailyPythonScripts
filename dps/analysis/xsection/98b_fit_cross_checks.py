@@ -2,7 +2,7 @@ from optparse import OptionParser
 # @BROKEN
 from dps.config.xsection import XSectionConfig, fit_var_inputs
 from dps.config.variable_binning import bin_edges_vis
-from .lib import read_normalisation, closure_tests
+from dps.analysis.xsection.lib import read_normalisation, closure_tests
 # from dps.utils.file_utilities import read_data_from_JSON
 # from dps.utils.plotting import Histogram_properties
 
@@ -12,7 +12,7 @@ from dps.utils.hist_utilities import value_error_tuplelist_to_hist, spread_x, \
     limit_range_y
 from dps.utils.plotting import compare_measurements, Histogram_properties
 from dps.config.latex_labels import fit_variables_latex, samples_latex
-from .lib import read_initial_normalisation
+from dps.analysis.xsection.lib import read_initial_normalisation
 # import linecache
 # 
 # from config.variable_binning import variable_bins_ROOT

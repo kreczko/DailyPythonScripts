@@ -15,7 +15,7 @@ echo "DailyPythonScripts are set up"
 
 echo "Running payload"
 >&2 echo "Running payload"
-time python experimental/condor/run01_forAllOptions.py -n $1
+time python dps/experimental/condor/run01_forAllOptions.py -n $1
 
 echo "Done"
 ls

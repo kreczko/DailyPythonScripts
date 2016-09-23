@@ -13,7 +13,7 @@ from dps.utils.Calculation import combine_complex_results
 from dps.utils.Fitting import Minuit, RooFitFit, FitData, FitDataCollection
 from dps.utils.file_utilities import write_data_to_JSON
 from dps.utils.ROOT_utils import set_root_defaults, get_histograms_from_trees
-from .lib import closure_tests
+from dps.analysis.xsection.lib import closure_tests
 
 def get_histograms( channel, input_files, variable, met_systematic, met_type, variable_bin,
                    b_tag_bin, 

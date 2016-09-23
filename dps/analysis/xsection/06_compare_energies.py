@@ -10,7 +10,7 @@ import matplotlib.gridspec as gridspec
 import matplotlib.pyplot as plt
 import rootpy.plotting.root2matplotlib as rplt
 
-from .lib import read_xsection_measurement_results
+from dps.analysis.xsection.lib import read_xsection_measurement_results
 from dps.config.xsection import XSectionConfig
 from dps.config.variable_binning import bin_edges_full
 from dps.config.latex_labels import variables_latex
